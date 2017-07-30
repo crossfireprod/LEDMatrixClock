@@ -14,7 +14,7 @@ Repository Contents
 External Libraries
 -------------------
 The following libraries are used to drive the LED Matrix:
-- [RGBmatrixPanel_IDE](https://github.com/pkourany/RGBmatrixPanel_IDE/blob/master/LICENSE.txt)
+- [RGBmatrixPanel_IDE](https://github.com/pkourany/RGBmatrixPanel_IDE)
 - [Adafruit_mfGFX_Library](https://github.com/pkourany/Adafruit_mfGFX_Library)
 - [SparkIntervalTimer](https://github.com/pkourany/SparkIntervalTimer)
 
