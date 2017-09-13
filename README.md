@@ -1,4 +1,7 @@
 # LEDMatrixClock
+
+![LED Matrix Clock](/Images/Clock_Cropped.jpg)  
+
 Weekend project to make something useful out of two RGB LED matrices I had laying around.  The matrices are mounted back to back to serve as a clock / generic information display in the [Resica Falls Scout Reservation STEM Center](https://resicafalls.org/programs-and-opportunities).
 
 
