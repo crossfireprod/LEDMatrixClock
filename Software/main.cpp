@@ -58,9 +58,9 @@ void setup() {
 	// ISR Time Measurement
 	pinMode(A5, OUTPUT);
 
-	// Setup Matrix
-  matrix.begin();
-  matrix.setTextWrap(false); // Allow text to run off right edge
+    // Setup Matrix
+    matrix.begin();
+    matrix.setTextWrap(false); // Allow text to run off right edge
 
 	// Wait for Particle cloud connection.
 	while(Particle.connected() == false) {
@@ -183,7 +183,7 @@ void refresh_display(void) {
 		break;
 	}
 
-  // Set Month
+    // Set Month
 	matrix.setTextColor(matrix.Color333(1, 1, 1));
 	matrix.setTextSize(1);
 	matrix.setCursor(1, 8);
@@ -238,8 +238,8 @@ void refresh_display(void) {
 			matrix.drawRect(15, 4, 2, 2, colonColorDim);
 		}
 
-  // Update Matrix
-  matrix.swapBuffers(false);
+    // Update Matrix
+    matrix.swapBuffers(false);
 
 	// Toggle GPIO pin to time ISR speed w/ externally connected oscilloscope.
 	digitalWrite(A5, LOW);
