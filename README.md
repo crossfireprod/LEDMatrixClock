@@ -12,7 +12,8 @@ Repository Contents
       - STL files for mounting hardware.
 * **/Software** 
       - Particle Photon Sketch
-* **/Images** - TODO: Add images of the completed clock assembly.
+* **/Images** 
+	  - The completed clock assembly.
 
 External Libraries
 -------------------
