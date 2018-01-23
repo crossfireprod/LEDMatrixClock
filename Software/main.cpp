@@ -122,22 +122,25 @@ void refresh_display(void) {
 	uint16_t colonColorDim;
 	char charTempf[4];
 
-        // Account For DST
-        if (Time.isDST)
-        {
-	        Time.beginDST();
-        }
+	// Account For DST
+        if (Time.isDST())
+	{
+		Time.beginDST();
+	}
 	else
-        {
-	        Time.endDST();
-        }
+	{
+		Time.endDST();
+	}
 
         // Update Current Time Variables
-	intHour         = Time.hourFormat12();
-	intMinute       = Time.minute();
-	intSecond       = Time.second();
-	intDay	        = Time.day();
-	intMonth        = Time.month();
+	intHour 		= Time.hourFormat12();
+	intMinute 	= Time.minute();
+	intSecond 	= Time.second();
+	intDay			= Time.day();
+	intMonth 		= Time.month();
+
+        // Publish current device time to Particle cloud.
+	Particle.publish("Device Time:", Time.timeStr(), PRIVATE);
 
 	// Start with a blank canvas; all elements are re-drawn for every update.
 	matrix.fillScreen(0x0000);
