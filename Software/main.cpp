@@ -122,12 +122,22 @@ void refresh_display(void) {
 	uint16_t colonColorDim;
 	char charTempf[4];
 
-	// Get Time
-	intHour 		= Time.hourFormat12();
-	intMinute 	= Time.minute();
-	intSecond 	= Time.second();
-	intDay			= Time.day();
-	intMonth 		= Time.month();
+        // Account For DST
+        if (Time.isDST)
+        {
+	        Time.beginDST();
+        }
+	else
+        {
+	        Time.endDST();
+        }
+
+        // Update Current Time Variables
+	intHour         = Time.hourFormat12();
+	intMinute       = Time.minute();
+	intSecond       = Time.second();
+	intDay	        = Time.day();
+	intMonth        = Time.month();
 
 	// Start with a blank canvas; all elements are re-drawn for every update.
 	matrix.fillScreen(0x0000);
