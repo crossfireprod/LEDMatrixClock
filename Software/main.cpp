@@ -35,6 +35,7 @@
     Timer timerRefreshDisplay(DISPLAY_REFRESH_RATE, refresh_display);
     Timer timerSyncTime(TIME_SYNC_INTERVAL, sync_time);
 
+// GLOBAL VARIABLES
     // Global Time Variables
     int intHour;
     int intMinute;
@@ -42,8 +43,9 @@
     int intDay;
     int intMonth;
 
+    // Time Sync Request Flag
+    bool requestTimeSync;
 
-// GLOBAL VARIABLES
     // Display Demo
     const char str[] = "RFSR STEM";
     int textX   = matrix.width(),
@@ -108,11 +110,19 @@ void loop() {
     //
     Particle.process();
 
+    //
+    if (requestTimeSync == true)
+    {
+        Particle.syncTime();
+        requestTimeSync = false;
+    }
+
 }
 
 
 void sync_time() {
-    Particle.syncTime();
+    // Set flag to trigger sync on next main loop iteration.
+    requestTimeSync = true;
 
 } // END sync_time
 
