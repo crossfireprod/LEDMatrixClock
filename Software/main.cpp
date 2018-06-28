@@ -19,11 +19,11 @@
     // General Configuration Parameters
     #define DISPLAY_REFRESH_RATE    1000
     #define TIME_SYNC_INTERVAL      86400000    // 24 Hrs
-    #define TIME_ZONE               -4          // EDT (-5 for EST)
+    #define TIME_ZONE               -4          // -4 EDT / -5 EST
 
 // PROTOTYPES / DECLARATIONS
     // Function Prototypes
-    void demo_animation(void);
+    int  demo_animation(String);
     void flash_status_pixel(int, int, char);
     void refresh_display(void);
     void sync_time(void);
@@ -89,13 +89,16 @@ void setup() {
        flash_status_pixel(1, 100, 'B');
     }
 
+    // Register Clound Function(s)
+    Particle.function("animation", demo_animation);
+
     // Indicate successful cloud connection & time sync.
     flash_status_pixel(15, 100, 'G');
 
     // Configure Clock
     Time.zone(TIME_ZONE);
 
-    // Start Display Update Timer
+    // Start Display Update ISR Timer(s)
     timerRefreshDisplay.start();
     timerSyncTime.start();
 
@@ -299,7 +302,8 @@ void flash_status_pixel(int loops, int del, char col) {
 }  // END flash_status_pixel
 
 
-void demo_animation() {
+int demo_animation(String tmp) {
+    //int startTime = Time.second();
     byte i;
 
     // Clear background
@@ -328,5 +332,9 @@ void demo_animation() {
     if((--textX) < textMin) textX = matrix.width();
     hue += 7;
     if(hue >= 1536) hue -= 1536;
+
+    //
+    //return (Time.Second() - startTime);
+    return 1;
 
 } // END demo_animation
